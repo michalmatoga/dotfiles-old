@@ -8,7 +8,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Ostatni Wyszukiwany wzorzec:
-~MSle0~/path
+~MSle0~/label
 
 # Ostatni Podstawienie Wyszukiwany wzorzec:
 ~MSle0&true
@@ -18,22 +18,30 @@ $$this->_otherRequired
 
 # Wiersz poleceń Historia (od najnowszych po najstarsze):
 :wqa
+:qa
 :w
-:NERDTreeClose
+:q
+:NERDTree
+:set filetype=php
+:filetype=php
+:set filetype=html
+:so $MYVIMRC
 :wq
+:set tags=~/.vim/mytags/armapik
+:TagbarOpen
+:reg
+:182
+:NERDTreeClose
 :qa!
 :h taglist()
 :Helptags
-:qa
 :h MiniBufExplorer
 :q!
 :recover product.phtml
 :find .vimrc
-:q
 :au FocusLost * :wa
 :find ~/.vimrc
 :h matchit
-:TagbarOpen
 :%s/true/$this->_otherRequired/gc
 :%s/true/$this->_otherRequired/
 :%s/true/$this->_otherRequired/gi
@@ -44,7 +52,6 @@ $$this->_otherRequired
 :setignorecase
 :Gdiff
 :Vimdiff
-:NERDTree
 :call Svndiff("prev")
 :NERDTree ~/
 :NERDTree /home/michal/
@@ -56,19 +63,26 @@ $$this->_otherRequired
 :help syntastic
 :BookmarkToRoot armapik
 :help simple-pairs
-:reg
 :OpenBookmark armapik
 :Bookmarks on
 :B on
 :NerdTree armapik
-:Bookmark armapik
-:help nerdtree
-:Q
-:\mbe
-:mbe
-:set number
 
 # Szukany ciąg Historia (od najnowszych po najstarsze):
+?/label
+?/\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/
+?/descr
+?/descri
+?/alti
+?/kosz
+?/do-kohhh
+?/do-
+?/short
+?/producta
+?/clas
+?/alt
+?/pro
+??price
 ?/path/to/framework/library
 ?/bin/bash
 ?/keymap
@@ -84,7 +98,6 @@ $$this->_otherRequired
 ?/.vim
 ?/.vimr
 ? ^" \a
-?/label
 ? }
 ? ^
 ?/ignore
@@ -100,6 +113,7 @@ $$this->_otherRequired
 # Wyrażenie Historia (od najnowszych po najstarsze):
 
 # Wiersz wprowadzeń Historia (od najnowszych po najstarsze):
+@div class="row"
 @header
 @div
 @li>
@@ -107,47 +121,216 @@ $$this->_otherRequired
 # Wiersz wprowadzeń Historia (od najnowszych po najstarsze):
 
 # Rejestry:
-"0	LINE	0
-	  let g:miniBufExplMapCTabSwitchBufs = 1
+""0	CHAR	0
+	<label for="username">
+	      <span><?php echo $form->username->getLabel() ?>:</span>
+	      <?php echo $form->username->renderViewHelper() ?>
+	      <?php echo $form->username->renderErrors() ?>
+	    </label>
 "1	LINE	0
-	:au FocusLost * :wa
+	    <label class="standard-checkbox att remember-label">
+	      <?php echo $form->rememberme->renderViewHelper() ?>
+	      <span>Zapamiętaj mnie</span>
+	    </label>
 "2	LINE	0
-	
+	    <label for="password">
+	      <span><?php echo $form->password->getLabel() ?>:</span>
+	      <?php echo $form->password->renderViewHelper() ?>
+	      <?php echo $form->password->renderErrors() ?>
+	    </label>
 "3	LINE	0
-	            <img class="l-bg" src="/public/gfx/pix.gif" alt="bg"/>
-	            <img class="r-bg" src="/public/gfx/pix.gif" alt="bg"/>
-"4	LINE	0
-	<?php $this->pageTitleK
+	    <label for="username">
+	      <span><?php echo $form->username->getLabel() ?>:</span>
+	      <?php echo $form->username->renderViewHelper() ?>
+	      <?php echo $form->username->renderErrors() ?>
+	    </label>
+"4	CHAR	0
+	<label for="username">
+	      <span><?php echo $form->username->getLabel() ?>:</span>
+	      <?php echo $form->username->renderViewHelper() ?>
+	      <?php echo $form->username->renderErrors() ?>
+	    </label>
 "5	LINE	0
-	<h3 title="Rejestracja">Logowanie</h3>
+	<?php echo $this->product['code'] ?>
+	<?php echo $this->product['availability'] ?>
 "6	LINE	0
-	<h3 title="<?php echo $this->translate('Registration status') ?>"><?php echo $this->translate('Registration status') ?></h3>
+	
 "7	LINE	0
-	<h3 title="<?php echo $this->translate('Registration status') ?>"><?php echo $this->translate('Registration status') ?></h3>
+	
 "8	LINE	0
-	<h3 title="<?php echo $this->translate('Confirm registration') ?>"><?php echo  ?></h3>
+	<?php /*
+	<h3 title="Informacje o produkcie">Informacje o produkcie</h3>
+	283
+<<a class="fancy main-photo" rel="product-gallery" href="<?php echo $this->imageSrc($this->product['image'], 'fancyproduct') ?>"><img class="big-product-photo" src="<?php echo $this->imageSrc($this->product['image'], 'product') ?>" alt="<?php echo $this->product['name'] ?>" /></a>
+	
+	<div class="product-summary">
+	<h2 class="product-name" title="<?php echo $this->product['name'] ?>"><?php echo $this->product['name'] ?></h2>
+	<div class="pricing">
+	<span class="price-label">cena:</span>
+	<h3><?php echo $this->product['price'] ?> pln</h3>
+	<form id="product-info-form" action="<?php echo $this->url(array(), 'cart') ?>" method="post">
+	<?php echo $this->formHidden('id_form', $this->product['id']) ?>
+	<?php if ($this->product['finish']) : ?>
+	<?php echo $this->formHidden('finish_form') ?>
+	<?php echo $this->formHidden('material_price_form') ?>
+	<?php echo $this->formHidden('sawing_price_form') ?>
+	<?php echo $this->formHidden('band_price_form') ?>
+	<?php echo $this->formHidden('width_form') ?>
+	<?php echo $this->formHidden('height_form') ?>
+	<?php echo $this->formHidden('sub_finish_form') ?>
+	<?php endif ?>
+	</form>
+	<a href="#" id="to-cart-main-button" class="rounded-button" title="do koszyka">
+	<img class="l-bg" src="/public/gfx/pix.gif" alt="bg"/>
+	<img class="r-bg" src="/public/gfx/pix.gif" alt="bg"/>
+	<span>+</span>do koszyka
+	</a>
+	</div>
+	<dl class="product-properties">
+	<dt>Dostępność:</dt>
+	<dd class="availability"><?php echo $this->product['availability'] ?></dd>
+	<dt>Kod produktu:</dt>
+	<dd class="code"><?php echo $this->product['code'] ?></dd>
+	</dl>
+	</div>
+	
+	<?php if ($this->product['gallery']) : ?>
+	<div class="galery">
+	<?php foreach ($this->product['gallery'] as $photo) : ?>
+	<a class="fancy" rel="product-gallery" href="<?php echo $this->imageSrc($photo, 'fancyproduct') ?>"><img class="small-product-photo" src="<?php echo $this->imageSrc($photo, 'productgalery') ?>" /></a>
+	<?php endforeach; ?>
+	</div>	
+	  <?php endif; ?>
+	
+	<h3 title="Opis produktu">Opis produktu</h3>
+	  <div class="text">
+	  <?php echo $this->product['description'] ?>
+	  </div>
+	
+	  <?php if ($this->product['finish']) : ?>
+	  <div class="price-calculator">
 "9	LINE	0
-	set expandtab
-	set shiftwidth=2
-	set softtabstop=2
+	          <?php endif;*/ ?>
+	
+	
+	<?php echo $this->product['code'] ?>
+	<?php echo $this->product['availability'] ?>
+	<?php $this->pageHeader = $this->product['name'] ?>
+	          <div id="product-details">
+	          <div id="product-gallery">
+	          <img class="main" src="<?php echo $this->imageSrc($this->product['image'], 'fancyproduct') ?>" 
+	alt="<?php echo $this->product['name'] ?>"/>
+	<?php if ($this->product['gallery']) : ?>
+	<div class="thumbs">
+	<?php foreach ($this->product['gallery'] as $photo) : ?>
+	<a href="<?php echo $this->imageSrc($photo, 'fancyproduct') ?>">
+	<img src="<?php echo $this->imageSrc($photo, 'productgalery') ?>" alt="<?php echo $photo ?>"/></a>
+	<?php endforeach; ?>
+	</div>	
+	  <?php endif; ?>
+	          </div>
+	          <div id="product-info">
+	          <h2><?php echo $this->product['name'] ?></h2>
+	
+	          <div class="pricing">
+	          <span class="label">Cena:</span>
+	          <span class="price"><?php echo $this->product['price'] ?> PLN</span>
+	          <a href="#" class="to-cart">Do koszyka</a>
+	          </div>
+	          <div class="text"
+	          <p><?php echo $this->product['description'] ?></p>
+	          </div>
+	          </div>
+	          <div id="tabs">
+	          <ul>
+	          <li class="active"><a href="#tabs-1">Opis produktu</a></li>
+	          <li><a href="#tabs-2">Cechy produktu</a></li>
+	          </ul>
+	          <div id="tabs-1" class="active">
+	<?php echo $this->product['description'] ?>
+	          </div>
+	          <div id="tabs-2">
+	          <p>
+	          tab 2
+	          </p>
+	          </div>
+	          </div>
+	          <div id="product-suggestions">
+	          <h3>Możesz jeszcze potrzebować:</h3>
+	          <ul>
+	          <li>
+	          <a href="#">
 "m@	CHAR	0
-	o<div class="row">j/labelo</div>q�kb
-""-	CHAR	0
-	svn
+	V%S<dic�kbv class="row">
+"-	CHAR	0
+	#
 
 # Zakładki w plikach:
-'0  5  10  ~/.vim/generateCtags
-'1  11  13  ~/.vimrc
-'2  5  24  ~/Projekty/armapik/application/Bootstrap.php
-'3  1  0  /usr/share/vim/vim73/doc/eval.txt
-'4  209  24  ~/.vim/bundle/minibufexpl.vim/doc/minibufexpl.txt
-'5  13  0  ~/.vimrc
-'6  1  0  ~/NERD_tree_1
-'7  1  0  ~/Projekty/armapik/application/views/scripts/registration/success.phtml
-'8  6  12  ~/.vimrc
-'9  3  0  ~/Projekty/armapik/application/controllers/RegistrationController.php
+'0  1  27  ~/README.md
+'1  1  0  ~/Projekty/armapik/-MiniBufExplorer-
+'2  27  0  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+'3  72  0  ~/Projekty/armapik/application/controllers/ProductsController.php
+'4  5  10  ~/.vim/generateCtags
+'5  11  13  ~/.vimrc
+'6  5  24  ~/Projekty/armapik/application/Bootstrap.php
+'7  1  0  /usr/share/vim/vim73/doc/eval.txt
+'8  209  24  ~/.vim/bundle/minibufexpl.vim/doc/minibufexpl.txt
+'9  13  0  ~/.vimrc
 
 # Lista odniesień (począwszy od najnowszych):
+-'  1  27  ~/README.md
+-'  1  0  ~/Projekty/armapik/-MiniBufExplorer-
+-'  2  16  ~/Projekty/armapik/-MiniBufExplorer-
+-'  1  0  ~/Projekty/armapik/application/views/scripts/registration/index.phtml
+-'  1  0  ~/Projekty/armapik/application/views/scripts/registration/login.phtml
+-'  25  4  ~/Projekty/armapik/application/views/scripts/registration/login.phtml
+-'  31  5  ~/Projekty/armapik/application/views/scripts/registration/login.phtml
+-'  18  4  ~/Projekty/armapik/application/views/scripts/registration/login.phtml
+-'  27  0  ~/Projekty/armapik/NERD_tree_1
+-'  36  2  ~/Projekty/armapik/NERD_tree_1
+-'  1  0  ~/Projekty/armapik/NERD_tree_1
+-'  1  0  ~/Projekty/armapik/NERD_tree_2
+-'  27  0  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  7  0  ~/Projekty/armapik/NERD_tree_3
+-'  10  2  ~/Projekty/armapik/NERD_tree_3
+-'  1  0  ~/Projekty/armapik/NERD_tree_3
+-'  74  0  ~/Projekty/armapik/application/controllers/ProductsController.php
+-'  2  0  ~/Projekty/armapik/application/configs/routes.xml
+-'  1  0  ~/Projekty/armapik/application/controllers/ProductsController.php
+-'  1  0  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  72  0  ~/Projekty/armapik/application/controllers/ProductsController.php
+-'  1  0  ~/Projekty/armapik/application/views/scripts/pages/contact.phtml
+-'  74  21  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  5  10  ~/.vim/generateCtags
+-'  11  85  ~/.vim/generateCtags
+-'  3  0  ~/.vim/generateCtags
+-'  11  13  ~/.vimrc
+-'  1  0  ~/.vimrc
+-'  5  24  ~/Projekty/armapik/application/Bootstrap.php
+-'  1  0  ~/Projekty/armapik/application/Bootstrap.php
+-'  1  0  /usr/share/vim/vim73/doc/eval.txt
+-'  5752  0  /usr/share/vim/vim73/doc/eval.txt
+-'  17  15  ~/Projekty/armapik/application/controllers/IndexController.php
+-'  7  15  ~/Projekty/armapik/application/controllers/IndexController.php
+-'  9  0  ~/Projekty/armapik/index.php
+-'  15  0  ~/Projekty/armapik/html/index.html
+-'  2  0  ~/Projekty/armapik/index.php
+-'  1  0  ~/Projekty/armapik/index.php
+-'  209  24  ~/.vim/bundle/minibufexpl.vim/doc/minibufexpl.txt
+-'  9  47  ~/.vim/bundle/minibufexpl.vim/doc/minibufexpl.txt
+-'  8  47  ~/.vim/bundle/minibufexpl.vim/doc/minibufexpl.txt
+-'  27  0  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  7  0  ~/Projekty/armapik/NERD_tree_3
+-'  10  2  ~/Projekty/armapik/NERD_tree_3
+-'  1  0  ~/Projekty/armapik/NERD_tree_3
+-'  74  0  ~/Projekty/armapik/application/controllers/ProductsController.php
+-'  21  1  ~/Projekty/armapik/application/views/scripts/registration/login.phtml
+-'  2  0  ~/Projekty/armapik/application/configs/routes.xml
+-'  1  0  ~/Projekty/armapik/application/controllers/ProductsController.php
+-'  1  0  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  72  0  ~/Projekty/armapik/application/controllers/ProductsController.php
+-'  1  0  ~/Projekty/armapik/application/views/scripts/pages/contact.phtml
+-'  74  21  ~/Projekty/armapik/application/views/scripts/products/product.phtml
 -'  5  10  ~/.vim/generateCtags
 -'  11  85  ~/.vim/generateCtags
 -'  3  0  ~/.vim/generateCtags
@@ -168,100 +351,39 @@ $$this->_otherRequired
 -'  8  47  ~/.vim/bundle/minibufexpl.vim/doc/minibufexpl.txt
 -'  343  53  ~/.vim/bundle/minibufexpl.vim/doc/minibufexpl.txt
 -'  1  0  ~/.vim/bundle/minibufexpl.vim/doc/minibufexpl.txt
--'  105  2  ~/NERD_tree_1
--'  1  1  ~/NERD_tree_1
--'  1  0  ~/Projekty/armapik/application/views/scripts/products/product.phtml
--'  13  0  ~/.vimrc
--'  4  0  ~/Projekty/armapik/application/views/scripts/products/product.phtml
--'  156  0  ~/Projekty/armapik/application/views/scripts/products/product.phtml
--'  3  0  ~/Projekty/armapik/application/views/scripts/products/news.phtml
--'  182  50  ~/Projekty/armapik/application/views/scripts/products/product.phtml
--'  7  20  ~/Projekty/armapik/application/views/scripts/products/product.phtml
--'  177  10  ~/Projekty/armapik/application/views/scripts/products/product.phtml
--'  160  12  ~/Projekty/armapik/application/views/scripts/products/product.phtml
--'  238  11  ~/Projekty/armapik/application/views/scripts/products/product.phtml
--'  137  10  ~/Projekty/armapik/application/views/scripts/products/product.phtml
--'  113  10  ~/Projekty/armapik/application/views/scripts/products/product.phtml
--'  170  2  ~/NERD_tree_1
--'  1  0  ~/Projekty/armapik/html/produkt.html
--'  1  0  ~/Projekty/armapik/application/views/scripts/registration/success.phtml
--'  2  66  ~/-MiniBufExplorer-
+-'  123  2  ~/NERD_tree_1
+-'  10  26  ~/.vimrc
+-'  1  0  ~/.vimrc
 -'  1  0  ~/Projekty/armapik/application/views/scripts/pages/contact.phtml
--'  1  0  ~/Projekty/armapik/application/views/scripts/registration/confirm.phtml
--'  2  0  ~/Projekty/armapik/application/views/scripts/registration/confirm.phtml
--'  6  12  ~/.vimrc
--'  7  0  ~/Projekty/armapik/application/controllers/RegistrationController.php
--'  1  0  ~/Projekty/armapik/application/controllers/RegistrationController.php
--'  214  1  ~/NERD_tree_1
--'  226  2  ~/NERD_tree_1
--'  3  0  ~/Projekty/armapik/application/controllers/RegistrationController.php
--'  28  0  ~/Projekty/armapik/application/controllers/RegistrationController.php
--'  4  0  ~/Projekty/armapik/application/controllers/RegistrationController.php
--'  238  1  ~/NERD_tree_1
--'  250  2  ~/NERD_tree_1
--'  10  0  ~/Projekty/armapik/application/controllers/RegistrationController.php
--'  24  0  ~/.vimrc
--'  286  1  ~/NERD_tree_1
--'  298  2  ~/NERD_tree_1
--'  45  4  ~/__Tagbar__
--'  50  0  ~/__Tagbar__
--'  86  35  ~/Projekty/armapik/application/forms/Registration.php
--'  25  4  ~/Projekty/armapik/application/forms/Registration.php
--'  9  31  ~/Projekty/armapik/application/forms/Registration.php
--'  1  0  ~/Projekty/armapik/application/forms/Registration.php
--'  28  0  ~/.vimrc
--'  337  1  ~/NERD_tree_1
--'  345  2  ~/NERD_tree_1
--'  2  0  ~/.vimrc
--'  1  0  ~/Projekty/armapik/application/views/scripts/registration/success.phtml
--'  1  0  ~/Projekty/armapik/application/views/scripts/pages/contact.phtml
--'  1  0  ~/Projekty/armapik/application/views/scripts/registration/confirm.phtml
--'  2  0  ~/Projekty/armapik/application/views/scripts/registration/confirm.phtml
--'  7  0  ~/Projekty/armapik/application/controllers/RegistrationController.php
--'  1  0  ~/Projekty/armapik/application/controllers/RegistrationController.php
--'  181  1  ~/NERD_tree_1
--'  193  2  ~/NERD_tree_1
--'  3  0  ~/Projekty/armapik/application/controllers/RegistrationController.php
--'  28  0  ~/Projekty/armapik/application/controllers/RegistrationController.php
--'  4  0  ~/Projekty/armapik/application/controllers/RegistrationController.php
--'  205  1  ~/NERD_tree_1
--'  217  2  ~/NERD_tree_1
--'  10  0  ~/Projekty/armapik/application/controllers/RegistrationController.php
--'  23  0  ~/.vimrc
--'  253  1  ~/NERD_tree_1
--'  265  2  ~/NERD_tree_1
--'  45  4  ~/__Tagbar__
--'  50  0  ~/__Tagbar__
--'  86  35  ~/Projekty/armapik/application/forms/Registration.php
--'  25  4  ~/Projekty/armapik/application/forms/Registration.php
--'  9  31  ~/Projekty/armapik/application/forms/Registration.php
--'  1  0  ~/Projekty/armapik/application/forms/Registration.php
--'  27  0  ~/.vimrc
--'  304  1  ~/NERD_tree_1
--'  312  2  ~/NERD_tree_1
--'  144  2  ~/NERD_tree_1
--'  1  0  ~/Projekty/armapik/html/produkt.html
--'  1  0  ~/Projekty/armapik/application/views/scripts/registration/success.phtml
--'  1  0  ~/Projekty/armapik/application/views/scripts/pages/contact.phtml
--'  1  0  ~/Projekty/armapik/application/views/scripts/registration/confirm.phtml
--'  2  0  ~/Projekty/armapik/application/views/scripts/registration/confirm.phtml
--'  7  0  ~/Projekty/armapik/application/controllers/RegistrationController.php
--'  1  0  ~/Projekty/armapik/application/controllers/RegistrationController.php
+-'  173  21  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  40  0  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  179  32  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  128  44  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  135  65  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  136  65  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  140  53  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  141  47  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  142  45  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  145  23  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  175  16  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  26  0  ~/Projekty/armapik/application/views/scripts/products/product.phtml
+-'  5  10  ~/.vim/generateCtags
+-'  11  85  ~/.vim/generateCtags
+-'  3  0  ~/.vim/generateCtags
+-'  13  13  ~/.vimrc
+-'  5  24  ~/Projekty/armapik/application/Bootstrap.php
+-'  1  0  ~/Projekty/armapik/application/Bootstrap.php
 -'  1  0  /usr/share/vim/vim73/doc/eval.txt
+-'  5752  0  /usr/share/vim/vim73/doc/eval.txt
+-'  1  0  ~/Projekty/armapik/-MiniBufExplorer-
 
 # Historia zakładek w plikach (od najnowszych po najstarsze):
 
-> ~/.vim/generateCtags
-	"	5	10
-	^	5	17
-	.	5	16
-	+	4	16
-	+	5	21
-	+	11	85
-	+	1	10
-	+	3	39
-	+	2	31
-	+	5	16
+> ~/README.md
+	"	1	27
+	^	1	28
+	.	1	27
+	+	1	27
 
 > ~/NERD_tree_1
 	"	4	0
@@ -366,6 +488,356 @@ $$this->_otherRequired
 	+	1	0
 	+	1	0
 	+	1	0
+
+> ~/Projekty/armapik/NERD_tree_2
+	"	3	0
+	.	1	0
+	+	1	0
+	+	1	0
+
+> ~/Projekty/armapik/NERD_tree_1
+	"	24	0
+	.	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+
+> ~/Projekty/armapik/application/views/scripts/registration/login.phtml
+	"	1	0
+	.	25	0
+	+	3	0
+	+	3	22
+	+	2	0
+	+	3	0
+	+	2	52
+	+	32	69
+	+	34	0
+	+	32	69
+	+	31	0
+	+	3	59
+	+	8	0
+	+	35	0
+	+	32	69
+	+	4	0
+	+	10	19
+	+	31	0
+	+	31	4
+	+	31	0
+	+	11	0
+	+	18	0
+	+	25	0
+
+> ~/Projekty/armapik/application/views/scripts/registration/index.phtml
+	"	1	0
+	.	9	0
+	+	12	0
+	+	21	0
+	+	12	16
+	+	21	0
+	+	12	0
+	+	21	6
+	+	9	0
+	k	22	0
+
+> ~/Projekty/armapik/-MiniBufExplorer-
+	"	1	0
+	.	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	0
+
+> ~/Projekty/armapik/application/views/scripts/products/product.phtml
+	"	27	0
+	^	27	42
+	.	27	0
+	+	74	0
+	+	74	0
+	+	74	42
+	+	74	13
+	+	1	7
+	+	1	0
+	+	74	14
+	+	74	50
+	+	74	0
+	+	1	7
+	+	1	0
+	+	74	16
+	+	1	44
+	+	74	30
+	+	74	45
+	+	74	62
+	+	74	53
+	+	74	62
+	+	74	0
+	+	74	62
+	+	74	0
+	+	74	51
+	+	74	0
+	+	74	103
+	+	74	0
+	+	74	0
+	+	74	41
+	+	74	0
+	+	74	17
+	+	74	145
+	+	74	3
+	+	74	105
+	+	74	69
+	+	74	69
+	+	74	0
+	+	74	64
+	+	74	90
+	+	74	0
+	+	74	0
+	+	74	0
+	+	74	50
+	+	74	27
+	+	74	50
+	+	74	13
+	+	74	0
+	+	74	0
+	+	1	0
+	+	2	0
+	+	1	0
+	+	23	81
+	+	31	0
+	+	26	0
+	+	23	74
+	+	27	0
+
+> ~/Projekty/armapik/application/controllers/ProductsController.php
+	"	75	0
+	^	75	0
+	.	75	0
+	+	74	0
+	+	74	0
+	+	75	0
+
+> ~/Projekty/armapik/application/configs/routes.xml
+	"	2	0
+
+> ~/Projekty/armapik/NERD_tree_3
+	"	7	0
+	.	1	0
+	+	1	0
+
+> ~/.vimrc
+	"	10	26
+	^	10	27
+	.	10	27
+	+	1	19
+	+	7	25
+	+	1	7
+	+	8	27
+	+	21	0
+	+	22	0
+	+	21	39
+	+	21	120
+	+	21	0
+	+	21	46
+	+	21	54
+	+	21	84
+	+	21	0
+	+	21	87
+	+	21	0
+	+	29	0
+	+	16	0
+	+	23	0
+	+	24	20
+	+	24	18
+	+	24	20
+	+	24	17
+	+	24	17
+	+	25	126
+	+	26	128
+	+	27	127
+	+	28	11
+	+	25	0
+	+	24	20
+	+	24	17
+	+	24	0
+	+	24	0
+	+	24	0
+	+	24	0
+	+	24	16
+	+	24	0
+	+	3	14
+	+	6	12
+	+	7	0
+	+	15	0
+	+	14	40
+	+	15	0
+	+	21	38
+	+	21	0
+	+	21	0
+	+	21	0
+	+	21	37
+	+	21	0
+	+	21	0
+	+	20	38
+	+	11	0
+	+	13	13
+	+	10	27
+
+> ~/Projekty/armapik/GoToFile
+	"	1	0
+	.	15	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	15	0
+
+> ~/Projekty/armapik/application/views/scripts/pages/contact.phtml
+	"	2	0
+
+> ~/Projekty/armapik/__Tagbar__
+	"	12	4
+	.	28	0
+	+	28	0
+	+	28	0
+	+	28	0
+	+	28	0
+	+	28	0
+	+	28	0
+	+	28	0
+	+	28	0
+	+	28	0
+	+	28	0
+	+	28	0
+	+	28	0
+	+	28	0
+	+	28	0
+	+	28	0
+	+	28	0
+
+> ~/Projekty/armapik/application/models/Cart.php
+	"	40	0
+
+> ~/Projekty/armapik/application/models/Products.php
+	"	123	0
+	.	4	0
+	+	136	0
+	+	136	0
+	+	4	0
+
+> ~/.vim/generateCtags
+	"	5	10
+	^	5	17
+	.	5	16
+	+	4	16
+	+	5	21
+	+	11	85
+	+	1	10
+	+	3	39
+	+	2	31
+	+	5	16
 
 > ~/Projekty/armapik/application/controllers/IndexController.php
 	"	2	0
@@ -501,66 +973,6 @@ $$this->_otherRequired
 	+	1	0
 	+	1	0
 
-> ~/Projekty/armapik/application/models/Products.php
-	"	16	0
-
-> ~/.vimrc
-	"	11	13
-	^	11	14
-	.	11	13
-	+	1	19
-	+	7	25
-	+	1	7
-	+	8	27
-	+	19	0
-	+	20	0
-	+	19	39
-	+	19	120
-	+	19	0
-	+	19	46
-	+	19	54
-	+	19	84
-	+	19	0
-	+	19	87
-	+	19	0
-	+	27	0
-	+	14	0
-	+	21	0
-	+	22	20
-	+	22	18
-	+	22	20
-	+	22	17
-	+	22	17
-	+	23	126
-	+	24	128
-	+	25	127
-	+	26	11
-	+	23	0
-	+	22	20
-	+	22	17
-	+	22	0
-	+	22	0
-	+	22	0
-	+	22	0
-	+	22	16
-	+	22	0
-	+	3	14
-	+	6	12
-	+	7	0
-	+	13	0
-	+	12	40
-	+	13	0
-	+	19	38
-	+	19	0
-	+	19	0
-	+	19	0
-	+	19	37
-	+	19	0
-	+	19	0
-	+	18	38
-	+	9	0
-	+	11	13
-
 > ~/Projekty/armapik/application/Bootstrap.php
 	"	5	24
 	^	4	41
@@ -593,21 +1005,6 @@ $$this->_otherRequired
 
 > /usr/share/vim/vim73/doc/eval.txt
 	"	1	0
-
-> ~/Projekty/armapik/application/views/scripts/products/product.phtml
-	"	1	0
-	^	1	8
-	.	1	7
-	+	156	0
-	+	158	0
-	+	160	0
-	+	155	13
-	+	1	7
-	+	6	0
-	+	182	14
-	+	182	50
-	+	183	0
-	+	1	7
 
 > ~/product.phtml
 	"	1	0
@@ -648,28 +1045,12 @@ $$this->_otherRequired
 	+	1	78
 	+	1	0
 
-> ~/Projekty/armapik/application/views/scripts/pages/contact.phtml
-	"	1	0
-
 > ~/Projekty/armapik/application/views/scripts/registration/success.phtml
 	"	1	0
 	^	1	66
 	.	1	0
 	+	1	0
 	+	1	0
-
-> ~/Projekty/armapik/application/views/scripts/registration/login.phtml
-	"	2	0
-	^	2	53
-	.	24	69
-	+	3	0
-	+	3	22
-	+	2	0
-	+	3	0
-	+	2	52
-	+	24	69
-	+	25	0
-	+	24	69
 
 > ~/Projekty/armapik/public/css/style.css
 	"	1377	0
@@ -710,11 +1091,6 @@ $$this->_otherRequired
 	^	1	22
 	.	1	21
 	+	1	21
-
-> ~/Projekty/armapik/NERD_tree_1
-	"	5	0
-	.	1	0
-	+	1	0
 
 > ~/Projekty/armapik/application/controllers/RegistrationController.php
 	"	7	0
@@ -766,18 +1142,6 @@ $$this->_otherRequired
 	+	116	0
 	+	122	0
 	+	11	22
-
-> ~/Projekty/armapik/application/views/scripts/registration/index.phtml
-	"	13	0
-	.	9	0
-	+	12	0
-	+	21	0
-	+	12	16
-	+	21	0
-	+	12	0
-	+	21	6
-	+	9	0
-	k	22	0
 
 > ~/Projekty/armapik/application/controllers/SearchController.php
 	"	46	7
