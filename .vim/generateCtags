@@ -1,6 +1,6 @@
 #!/bin/bash
-cd /home/michal/Projekty/armapik
-ctags-exuberant -f ~/.vim/mytags/armapik \
+cd /home/michal/Projekty/dkin
+ctags-exuberant -f ~/.vim/mytags/dkin \
 -h \".php\" -R \
 --exclude=\"\.git\" \
 --totals=yes \
