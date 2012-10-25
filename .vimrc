@@ -26,6 +26,8 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplUseSingleClick = 1
 let g:syntastic_mode_map = { 'mode': 'active',  'active_filetypes': ['js', 'php', 'html'],  'passive_filetypes': ['puppet'] }
 let g:svndiff_autoupdate = 1 
+au BufRead,BufNewFile *.twig set filetype=htmljinja
+au BufRead,BufNewFile *.twig.html set filetype=htmljinja
 augroup CursorLine
     au!
     au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
